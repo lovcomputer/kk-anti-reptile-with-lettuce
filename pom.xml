@@ -37,8 +37,8 @@
 
     <scm>
         <url>https://github.com/acshmily/kk-anti-reptile-with-lettuce</url>
-        <connection>scm:git:https://github.com/acshmily/kk-anti-reptile-with-lettuce</connection>
-        <developerConnection>scm:git:https://github.com/acshmily/kk-anti-reptile-with-lettuce</developerConnection>
+        <connection>scm:git:https://github.com/acshmily/kk-anti-reptile-with-lettuce.git</connection>
+        <developerConnection>scm:git:https://github.com/acshmily/kk-anti-reptile-with-lettuce.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
