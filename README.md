@@ -1,8 +1,17 @@
 ## 声明
 
 本项目基于kekingcn/kk-anti-reptile 二次修改而成，请知悉。开源许可与 kk-anti-reptile  一致
+### 该项目maven依赖
+```xml
+<dependency>
+  <groupId>com.github.acshmily</groupId>
+  <artifactId>kk-anti-reptile-with-lettuce</artifactId>
+  <version>1.0.0-RELEASE</version>
+</dependency>
+```
 
 ## 概述
+
 
 kk-anti-reptile 是适用于`基于 spring-boot 开发的分布式系统`的开源反爬虫接口防刷组件。
 
