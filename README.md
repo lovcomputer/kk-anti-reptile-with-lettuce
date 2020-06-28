@@ -1,3 +1,7 @@
+## 声明
+
+本项目基于kekingcn/kk-anti-reptile 二次修改而成，请知悉。开源许可与 kk-anti-reptile  一致
+
 ## 概述
 
 kk-anti-reptile 是适用于`基于 spring-boot 开发的分布式系统`的开源反爬虫接口防刷组件。
