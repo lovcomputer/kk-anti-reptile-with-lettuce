@@ -11,11 +11,13 @@ import cn.keking.anti_reptile.servlet.RefreshFormServlet;
 import cn.keking.anti_reptile.servlet.ValidateFormServlet;
 import cn.keking.anti_reptile.util.VerifyImageUtil;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.data.redis.core.RedisTemplate;
 
 import java.util.Comparator;
 import java.util.List;
@@ -29,7 +31,7 @@ import java.util.stream.Collectors;
 @Configuration
 @EnableConfigurationProperties(AntiReptileProperties.class)
 @ConditionalOnProperty(prefix = "anti.reptile.manager", value = "enabled", havingValue = "true")
-@Import({RedissonAutoConfig.class, WebMvcConfig.class})
+@Import({RedisAutoConfiguration.class, WebMvcConfig.class})
 public class AntiReptileAutoConfig {
 
     @Bean

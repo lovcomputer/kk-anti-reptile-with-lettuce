@@ -10,8 +10,8 @@
         <version>7</version>
     </parent>
 
-    <groupId>cn.keking.project</groupId>
-    <artifactId>kk-anti-reptile</artifactId>
+    <groupId>com.github.acshmily</groupId>
+    <artifactId>kk-anti-reptile-with-lettuce</artifactId>
     <version>1.0.0-RELEASE</version>
 
     <properties>
@@ -19,15 +19,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
-        <spring-boot.version>1.5.9.RELEASE</spring-boot.version>
-        <redisson.version>3.11.0</redisson.version>
+        <spring-boot.version>2.3.1.RELEASE</spring-boot.version>
         <servlet-api.version>3.0.1</servlet-api.version>
         <ua-util.version>1.21</ua-util.version>
         <commons-fileupload.version>1.4</commons-fileupload.version>
     </properties>
 
-    <name>kk-anti-reptile</name>
-    <url>https://gitee.com/kekingcn/kk-anti-reptile</url>
+    <name>kk-anti-reptile-with-lettuce</name>
+    <url>https://github.com/acshmily/kk-anti-reptile-with-lettuce</url>
 
     <licenses>
         <license>
@@ -37,15 +36,15 @@
     </licenses>
 
     <scm>
-        <url>https://gitee.com/kekingcn/kk-anti-reptile</url>
-        <connection>scm:git:https://gitee.com/kekingcn/kk-anti-reptile.git</connection>
-        <developerConnection>scm:git:https://gitee.com/kekingcn/kk-anti-reptile.git</developerConnection>
+        <url>https://github.com/acshmily/kk-anti-reptile-with-lettuce</url>
+        <connection>scm:git:https://github.com/acshmily/kk-anti-reptile-with-lettuce</connection>
+        <developerConnection>scm:git:https://github.com/acshmily/kk-anti-reptile-with-lettuce</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
     <issueManagement>
-        <system>Gitee</system>
-        <url>https://gitee.com/kekingcn/kk-anti-reptile/issues</url>
+        <system>github</system>
+        <url>https://github.com/acshmily/kk-anti-reptile-with-lettuce/issues</url>
     </issueManagement>
 
     <developers>
@@ -64,6 +63,11 @@
             <organizationUrl>https://www.keking.com/</organizationUrl>
             <url>https://github.com/gitchenjh</url>
         </developer>
+        <developer>
+            <name>acshmily</name>
+            <email>npc@newbie.town</email>
+            <url>https://github.com/acshmily</url>
+        </developer>
     </developers>
 
     <dependencies>
@@ -79,6 +83,7 @@
             <version>${spring-boot.version}</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
@@ -93,15 +98,17 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
             <version>${spring-boot.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.redisson</groupId>
-            <artifactId>redisson</artifactId>
-            <version>${redisson.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <version>${spring-boot.version}</version>
+            <scope>provided</scope>
         </dependency>
+
         <!-- User-Agent库 -->
         <dependency>
             <groupId>eu.bitwalker</groupId>
@@ -114,6 +121,7 @@
             <artifactId>commons-fileupload</artifactId>
             <version>${commons-fileupload.version}</version>
         </dependency>
+
 
     </dependencies>
 
