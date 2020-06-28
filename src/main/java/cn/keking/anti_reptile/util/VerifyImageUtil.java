@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author chenjh
- * @modify huanghz
+ * modify huanghz
  * @since 2019/7/16 11:05
  */
 public class VerifyImageUtil {
@@ -28,29 +28,16 @@ public class VerifyImageUtil {
         return new VerifyImageDTO(verifyId, null, base64Image, result);
     }
 
-    /**
-     * 保存验证码到Redis
-     * @param verifyImage
-     */
     public void saveVerifyCodeToRedis(VerifyImageDTO verifyImage) {
         stringRedisTemplate.boundValueOps(VERIFY_CODE_KEY + verifyImage.getVerifyId()).set(verifyImage.getResult(), 60, TimeUnit.SECONDS);
     }
 
 
 
-    /**
-     * 删除缓存
-     * @param verifyId
-     */
     public void deleteVerifyCodeFromRedis(String verifyId) {
         stringRedisTemplate.delete(VERIFY_CODE_KEY + verifyId);
     }
 
-    /**
-     * 获取缓存
-     * @param verifyId
-     * @return
-     */
     public String getVerifyCodeFromRedis(String verifyId) {
 
         return stringRedisTemplate.boundValueOps(VERIFY_CODE_KEY + verifyId).get();

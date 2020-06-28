@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author kl @kailing.pub
- * @modify huanghz
+ * modify huanghz
  * @since 2019/7/8
  */
 public class IpRule extends AbstractRule {
