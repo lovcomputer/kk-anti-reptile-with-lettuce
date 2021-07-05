@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.BoundHashOperations;
 import org.springframework.data.redis.core.BoundValueOperations;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -47,14 +48,15 @@ public class IpRule extends AbstractRule {
         int requestMaxSize = properties.getIpRule().getRequestMaxSize();
         // 获取请求统计数
         // RAtomicLong rRequestCount = redissonClient.getAtomicLong(RATELIMITER_COUNT_PREFIX.concat(requestUrl).concat(ipAddress));
-        BoundValueOperations<String,Long> rRequestCount = redisTemplate.boundValueOps(RATELIMITER_COUNT_PREFIX.concat(requestUrl).concat(ipAddress));
+//        BoundValueOperations<String,Long> rRequestCount = redisTemplate.boundValueOps(RATELIMITER_COUNT_PREFIX.concat(requestUrl).concat(ipAddress));
+        BoundValueOperations<String, String> rRequestCount = stringRedisTemplate.boundValueOps(RATELIMITER_COUNT_PREFIX.concat(requestUrl).concat(ipAddress));
         // 获取过期时间
 
         // RAtomicLong rExpirationTime = redissonClient.getAtomicLong(RATELIMITER_EXPIRATIONTIME_PREFIX.concat(requestUrl).concat(ipAddress));
         BoundValueOperations<String,Long> rExpirationTime = redisTemplate.boundValueOps(RATELIMITER_EXPIRATIONTIME_PREFIX.concat(requestUrl).concat(ipAddress));
         // 当前ip不存在则初始化该ip记录
         if (!redisTemplate.hasKey(RATELIMITER_EXPIRATIONTIME_PREFIX.concat(requestUrl).concat(ipAddress))) {
-            rRequestCount.set(0L);
+            rRequestCount.set("0");
             rExpirationTime.set(0L,expirationTime, TimeUnit.MILLISECONDS);
 //            rExpirationTime.expire(expirationTime, TimeUnit.MILLISECONDS);
         } else {
@@ -87,12 +89,14 @@ public class IpRule extends AbstractRule {
          */
         int expirationTime = properties.getIpRule().getExpirationTime();
         //RAtomicLong rRequestCount = redissonClient.getAtomicLong(RATELIMITER_COUNT_PREFIX.concat(requestUrl).concat(ipAddress));
-        BoundValueOperations<String,Long> rRequestCount = redisTemplate.boundValueOps(RATELIMITER_COUNT_PREFIX.concat(requestUrl).concat(ipAddress));
+//        BoundValueOperations<String,Long> rRequestCount = redisTemplate.boundValueOps(RATELIMITER_COUNT_PREFIX.concat(requestUrl).concat(ipAddress));
+        BoundValueOperations<String, String> rRequestCount = stringRedisTemplate.boundValueOps(RATELIMITER_COUNT_PREFIX.concat(requestUrl).concat(ipAddress));
 
         // RAtomicLong rExpirationTime = redissonClient.getAtomicLong(RATELIMITER_EXPIRATIONTIME_PREFIX.concat(requestUrl).concat(ipAddress));
         BoundValueOperations<String,Long> rExpirationTime = redisTemplate.boundValueOps(RATELIMITER_EXPIRATIONTIME_PREFIX.concat(requestUrl).concat(ipAddress));
 
-        rRequestCount.set(0L);
+//        rRequestCount.set(0L);
+        rRequestCount.set("0");
         rExpirationTime.set(0L,expirationTime, TimeUnit.MILLISECONDS);
         /**
          * 清除记录
@@ -124,6 +128,8 @@ public class IpRule extends AbstractRule {
 
     @Resource
     private RedisTemplate redisTemplate;
+    @Resource
+    private StringRedisTemplate stringRedisTemplate;
 
     @Resource
     private AntiReptileProperties properties;
